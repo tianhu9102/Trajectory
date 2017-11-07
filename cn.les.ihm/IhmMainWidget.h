@@ -29,6 +29,7 @@ public:
     void constructIhm();
     void conncects();
     void TraceDir(QString path);
+    void setDataPath(QString path);
 
     vtkUnstructuredGrid *displayLines(vtkRenderer *render, QString filename, QString color);
 
@@ -45,6 +46,7 @@ private:
 
     vtkRenderer* render0;
 
+    QString dataDir;//项目数据路径
 
 
 

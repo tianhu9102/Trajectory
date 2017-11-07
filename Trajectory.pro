@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     cn.les.ihm/IhmFourWidget.cpp \
     cn.les.ihm/IhmVTKWidget.cpp \
     cn.les.utility/FunListDir.cpp \
-    cn.les.ihm/IhmMainWidget.cpp
+    cn.les.ihm/IhmMainWidget.cpp \
+    cn.les.utility/StringImplement.cpp
 
 HEADERS  += MainWidget.h \
     cn.les.bean/Track.h \
@@ -38,7 +39,8 @@ HEADERS  += MainWidget.h \
     cn.les.ihm/IhmFourWidget.h \
     cn.les.ihm/IhmVTKWidget.h \
     cn.les.utility/FunListDir.h \
-    cn.les.ihm/IhmMainWidget.h
+    cn.les.ihm/IhmMainWidget.h \
+    cn.les.utility/StringImplement.h
 
 #win32:LIBS += $$quote(D:\aEnv\Qt\Qt5.5.1\5.5\Src\qtbase\src\plugins\sqldrivers\oci\qsqloci.lib )
 

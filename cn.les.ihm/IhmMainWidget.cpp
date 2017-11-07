@@ -5,6 +5,7 @@ IhmMainWidget::IhmMainWidget(QWidget *parent) : QWidget(parent)
     this->initParameters();
     this->constructIhm();
     this->conncects();
+
 }
 
 void IhmMainWidget::initParameters(){
@@ -21,6 +22,9 @@ void IhmMainWidget::initParameters(){
     vtkWidget1 = new IhmVTKWidget();
     //vtkWidget0->resize(350,400);
     //vtkWidget1->resize(350,400);
+
+    //数据路径初始值，用于在选取数据路径时打开对应目录
+     this->dataDir = "D:/";
 }
 
 void IhmMainWidget::constructIhm(){
@@ -146,7 +150,7 @@ void IhmMainWidget::showRightMenu()
 void IhmMainWidget::addDir(){
 
      QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-                                                     "D:/data/kghj_flight",
+                                                       this->dataDir,
                                                      QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
      if(dir!=NULL){
@@ -221,7 +225,7 @@ void IhmMainWidget::addDir(){
           outline->SetInputData(grid);
           outlineMapper->SetInputConnection(outline->GetOutputPort());
           outlineActor->SetMapper(outlineMapper);
-          outlineActor->GetProperty()->SetColor(0,0,0);
+          outlineActor->GetProperty()->SetColor(1.0,1.0,1.0);
           render->AddActor(outlineActor);
           //------------------添加包围框END-----------------
 
@@ -298,4 +302,8 @@ vtkUnstructuredGrid* IhmMainWidget::displayLines(vtkRenderer* render,QString fil
                 << "zmin: " << bounds[4] << " "
                 << "zmax: " << bounds[5] << std::endl; */
 
+}
+
+void IhmMainWidget::setDataPath(QString path){
+    this->dataDir = path;
 }
