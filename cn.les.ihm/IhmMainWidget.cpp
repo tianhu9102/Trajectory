@@ -1,5 +1,12 @@
 #include "IhmMainWidget.h"
 
+//!--------------------------------------------------
+//!
+//! @brief IhmMainWidget::IhmMainWidget
+//! @param parent
+//!  2017-11-07  nanjing  success
+//!
+//!--------------------------------------------------
 IhmMainWidget::IhmMainWidget(QWidget *parent) : QWidget(parent)
 {
     this->initParameters();
@@ -83,7 +90,7 @@ void IhmMainWidget::conncects(){
                 item->child(i)->setCheckState(0,Qt::Checked);
 
                 //qDebug()<<item->data(0,0).toString()+"/"+item->child(i)->data(0,0).toString();
-                 this->displayLines(render0, item->child(i)->data(0,0).toString(),QString::number(i%9));
+                 this->displayLines(render0, item->data(0,0).toString()+"/"+item->child(i)->data(0,0).toString(),QString::number(i%9));
             }
         }else{ //判断是子节点被选中
 
@@ -97,8 +104,9 @@ void IhmMainWidget::conncects(){
             }
             qDebug()<<"++++++++++++++++++++++";
             for(int i=0;i<tmp;i++){
-                qDebug()<<fileList->at(i);
-                this->displayLines(render0, fileList->at(i),QString::number(i%9));
+                qDebug()<<p->data(0,0).toString()+"/"+fileList->at(i);
+               // this->displayLines(render0, fileList->at(i),QString::number(i%9));
+                 this->displayLines(render0, p->data(0,0).toString()+"/"+fileList->at(i),QString::number(i%9));
             }
 
         }
@@ -173,7 +181,7 @@ void IhmMainWidget::addDir(){
               imageItem1->addChild(imageItem1_1);
 
               //显示每一条轨迹 ...........
-             vtkUnstructuredGrid* unGrid = this->displayLines(render,fileList->at(i),QString::number(i%9));
+             vtkUnstructuredGrid* unGrid = this->displayLines(render,dir+"/"+fileList->at(i),QString::number(i%9));
 
              //添加包围框
              multiUNGrid->append(unGrid);
@@ -260,11 +268,11 @@ void IhmMainWidget::TraceDir(QString path)
         if(info.isDir())
         {
             //如果是目录，则进行递归遍历
-            TraceDir(info.filePath());
+            TraceDir(info.fileName());
         }
         else
         {
-            fileList->append(info.filePath());
+            fileList->append(info.fileName());  //info.filePath()
             //普通文件，则直接输出
         }
     }
