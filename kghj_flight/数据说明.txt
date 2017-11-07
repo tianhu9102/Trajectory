@@ -1,0 +1,7 @@
+dataset  生成的acid_date数据（字段对应数据库）
+dataset1  生成的acid_date数据（调整字段顺序：acid,x,y）
+dataset2  生成的acid_date数据（与dataset数据相同）
+dataset3  生成的acid_date特征点数据（对应dataset数据）
+
+history1 生成模拟的航迹（分散于真实数据一侧）
+history2 生成模拟的航迹（分散于真实数据两侧）
