@@ -40,7 +40,7 @@ HEADERS  += MainWidget.h \
     cn.les.utility/FunListDir.h \
     cn.les.ihm/IhmMainWidget.h
 
-win32:LIBS += $$quote(D:\aEnv\Qt\Qt5.5.1\5.5\Src\qtbase\src\plugins\sqldrivers\oci\qsqloci.lib )
+#win32:LIBS += $$quote(D:\aEnv\Qt\Qt5.5.1\5.5\Src\qtbase\src\plugins\sqldrivers\oci\qsqloci.lib )
 
 #---------------------------------------------------------------------------------------------------------
 #import vtk_itk lib......
@@ -90,7 +90,7 @@ win32:LIBS += $$quote(C:\Program Files\VTK\lib\vtkGeovisCore-7.1.lib)
 win32:LIBS += $$quote(C:\Program Files\VTK\lib\vtkgl2ps-7.1.lib)
 win32:LIBS += $$quote(C:\Program Files\VTK\lib\vtkglew-7.1.lib)
 win32:LIBS += $$quote(C:\Program Files\VTK\lib\vtkGUISupportQt-7.1.lib)
-win32:LIBS += $$quote(C:\Program Files\VTK\lib\vtkGUISupportQtOpenGL-7.1.lib)
+#win32:LIBS += $$quote(C:\Program Files\VTK\lib\vtkGUISupportQtOpenGL-7.1.lib)
 win32:LIBS += $$quote(C:\Program Files\VTK\lib\vtkGUISupportQtSQL-7.1.lib)
 win32:LIBS += $$quote(C:\Program Files\VTK\lib\vtkhdf5-7.1.lib)
 win32:LIBS += $$quote(C:\Program Files\VTK\lib\vtkhdf5_hl-7.1.lib)
