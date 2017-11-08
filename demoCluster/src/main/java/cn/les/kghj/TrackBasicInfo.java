@@ -14,7 +14,8 @@ import cn.thu.utility.ConnectOracle;
 
 /**
  * 
- * @author DUYUE Date:2017-09-29
+ * @author DUYUE 
+ * Date:2017-09-29
  *
  */
 public class TrackBasicInfo {
