@@ -227,15 +227,53 @@ void IhmMainWidget::addDir(){
           }
           grid->SetPoints(points);
           grid->InsertNextCell(poly->GetCellType(),poly->GetPointIds());
+          //数据类型转换
+          vtkSmartPointer<vtkGeometryFilter> geometryFilter = vtkSmartPointer<vtkGeometryFilter>::New();
+          geometryFilter->SetInputData(grid);
+          geometryFilter->Update();
+          vtkPolyData* polydata = geometryFilter->GetOutput();
+
+            //方法一
+            /*
           vtkOutlineFilter* outline = vtkOutlineFilter::New();
           vtkPolyDataMapper* outlineMapper = vtkPolyDataMapper::New();
           vtkActor* outlineActor = vtkActor::New();
-          outline->SetInputData(grid);
+          outline->SetInputData(polydata);
           outlineMapper->SetInputConnection(outline->GetOutputPort());
           outlineActor->SetMapper(outlineMapper);
           outlineActor->GetProperty()->SetColor(1.0,1.0,1.0);
-          render->AddActor(outlineActor);
-          //------------------添加包围框END-----------------
+          render->AddActor(outlineActor);*/
+
+          //方法二  参考 https://lorensen.github.io/VTKExamples/site/Cxx/Visualization/CubeAxesActor/
+            vtkPolyDataMapper* mapper = vtkPolyDataMapper::New();
+            vtkActor* superquadricActor = vtkActor::New();
+            vtkCubeAxesActor* cubeAxesActor = vtkCubeAxesActor::New();
+            mapper->SetInputData(polydata);
+            superquadricActor->SetMapper(mapper);
+           cubeAxesActor->SetBounds(polydata->GetBounds());
+           cubeAxesActor->SetCamera(render->GetActiveCamera());
+           cubeAxesActor->GetTitleTextProperty(0)->SetColor(1.0,0.0,1.0); //X轴标题颜色
+           cubeAxesActor->GetLabelTextProperty(0)->SetColor(1.0,0.0,1.0); //X轴标签label颜色
+           cubeAxesActor->GetTitleTextProperty(1)->SetColor(0.0,1.0,0.0);
+           cubeAxesActor->GetLabelTextProperty(1)->SetColor(0.0,1.0,0.0);
+           cubeAxesActor->GetTitleTextProperty(2)->SetColor(0.0,0.0,1.0);
+           cubeAxesActor->GetLabelTextProperty(2)->SetColor(0.0,0.0,1.0);
+           cubeAxesActor->DrawXGridlinesOn();
+           cubeAxesActor->DrawYGridlinesOn();
+           cubeAxesActor->DrawZGridlinesOn();
+           cubeAxesActor->SetGridLineLocation(cubeAxesActor->VTK_GRID_LINES_FURTHEST);
+
+           cubeAxesActor->XAxisMinorTickVisibilityOff();
+           cubeAxesActor->YAxisMinorTickVisibilityOff();
+           cubeAxesActor->ZAxisMinorTickVisibilityOff();
+
+           render->AddActor(cubeAxesActor);
+           render->AddActor(superquadricActor);
+           render->GetActiveCamera()->Azimuth(30);
+           render->GetActiveCamera()->Elevation(30);
+           render->ResetCamera();
+           //------------------添加包围框END-----------------
+
 
           //...........
           vtkWidget1->getRenWin()->AddRenderer(render);

@@ -10,7 +10,12 @@
 #include <vtkEarthSource.h>
 #include <vtkPolyDataMapper.h>
 #include <vtkCursor3D.h>
+#include <vtkCubeAxesActor.h>
+#include <vtkTextProperty.h>
 #include <vtkOutlineFilter.h>
+#include <vtkGeometryFilter.h>
+#include <vtkCamera.h>
+
 
 
 class IhmVTKWidget : public QWidget
