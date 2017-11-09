@@ -33,7 +33,7 @@ public class TrackBasicInfo {
 		Map<Integer, String> acids = tCluster.getAcids();
 		List<String> all_acids = tCluster.getAcidnum(acids);
 		System.out.println("数据中所有航班号数：" + all_acids.size());
-		// 鏍规嵁杈撳叆鐨勮埅鐝彿锛岃嚜鍔ㄨ绠楀嚭鏃堕棿璺ㄥ害
+
 		/*
 		 * String flt_acid="CCA1590"; Map< Integer,String> range_time=
 		 * tCluster.getFlightDate(flt_acid); for(int

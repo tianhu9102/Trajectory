@@ -3,5 +3,10 @@ dataset1  生成的acid_date数据（调整字段顺序：acid,x,y）
 dataset2  生成的acid_date数据（与dataset数据相同）
 dataset3  生成的acid_date特征点数据（对应dataset数据）
 
-history1 生成模拟的航迹（分散于真实数据一侧）
-history2 生成模拟的航迹（分散于真实数据两侧）
+history1 生成模拟的航迹（分散于真实数据一侧、28条）+1条真实数据+1条聚类数据
+history2 生成模拟的航迹（分散于真实数据两侧、28条）+1条真实数据+1条聚类数据
+history11 生成模拟的航迹（分散于真实数据两侧、56条）+1条真实数据+1条聚类数据
+history22 生成模拟的航迹（分散于真实数据两侧、56条）+1条真实数据+1条聚类数据
+
+realData（根据acid_trackno确定的飞行计划数据）
+realData_part（部分飞行计划数据）
