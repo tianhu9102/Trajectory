@@ -26,7 +26,8 @@ public class ConnectOracle {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("connecting ...");
-			String url = "jdbc:oracle:thin:@127.0.0.1:1521:orcl";  //192.168.24.27
+			//String url = "jdbc:oracle:thin:@127.0.0.1:1521:orcl";  //192.168.24.27
+			String url = "jdbc:oracle:thin:@192.168.24.27:1521:orcl";  //192.168.24.27
 			connection = DriverManager.getConnection(url, dbUser, dbPwd);
 			/*
 			ResultSet rt = this.queryResult("select to_char(sysdate,'yyyy-mm-dd hh24:mi:ss') from dual");

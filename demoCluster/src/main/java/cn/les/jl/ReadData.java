@@ -27,19 +27,25 @@ public class ReadData {
 	//统计基本信息 sql1语句或者sql2
 	static String sql1="select acid,trackno,min(timestamped),max(timestamped),count(1) from RADAR t group by acid,trackno order by acid,trackno;";
 	static String sql2="select acid,trackno,mint,maxt,cnt from RADAR_AT";
+	//上海-北京
+	static String sql3="select distinct aa.acid, aa.trackno from RADAR aa, T_PLAN bb  where bb.adep='ZSPD' and bb.ades='ZBAA' and aa.acid = bb.acid order by acid";
+	//北京-上海
+    static String sql4="select distinct aa.acid, aa.trackno from RADAR aa, T_PLAN bb  where bb.adep='ZBAA' and bb.ades='ZSPD' and aa.acid = bb.acid order by acid";
 	//根据acid和trackno唯一确定一次飞行计划
-	String sql3="select * from RADAR where acid='AAL137' and trackno=75 order by timestamped";
+	String sql5="select * from RADAR where acid='AAL137' and trackno=75 order by timestamped";
 	
 	static ConnectOracle cOracle;
-	static String outDir = "D:/deve/QtProject/Trajectory/kghj_flight/realData/"; //数据写出目录
+	//static String outDir = "D:/deve/QtProject/Trajectory/kghj_flight/realData/"; //数据写出目录
+	static String outDir = "E:/aDownDemo/tianhuGithub/Trajectory/kghj_flight/real_BS/"; //数据写出目录
 	
 	static {
 		cOracle = new ConnectOracle();
-		cOracle.connect("scott", "tiger");
+		cOracle.connect("lesusp3", "lesusp3");
 	}
 	
 	public HashMap<Integer,String> getAcidTrackno() {
-		ArrayList list = cOracle.queryResultList(sql2);
+		//ArrayList list = cOracle.queryResultList(sql2);
+		ArrayList list = cOracle.queryResultList(sql4);
 		PreparedStatement pStatement = (PreparedStatement) list.get(0);
 		ResultSet rSet = (ResultSet) list.get(1);
 		
@@ -69,7 +75,7 @@ public class ReadData {
 			String vv = map.get(kk);
 		    System.out.println(kk+" "+vv);
 		}
-	}
+	}  
 	
 	/**
 	 * 功能：根据输入的acid_trackno获取一次飞行计划
