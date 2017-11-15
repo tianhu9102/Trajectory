@@ -59,12 +59,12 @@ void VisualizationTra::showPoints(vtkRenderer *render,QString color){
 
     poly->GetPointIds()->SetNumberOfIds(sourceTrajectoryPoints.size());
     for(int cpt=0; cpt < sourceTrajectoryPoints.size(); cpt++){
-        double p[3] = { (sourceTrajectoryPoints.at(cpt)->get_longitude()*1000),
-                       (sourceTrajectoryPoints.at(cpt)->get_latitude()*1000),
-                       sourceTrajectoryPoints.at(cpt)->get_mcl()};
-//        double p[3] = { (sourceTrajectoryPoints.at(cpt)->get_x()),
-//                       (sourceTrajectoryPoints.at(cpt)->get_y()),
-//                       sourceTrajectoryPoints.at(cpt)->get_mcl()*10};
+//        double p[3] = { (sourceTrajectoryPoints.at(cpt)->get_longitude()*1000),
+//                       (sourceTrajectoryPoints.at(cpt)->get_latitude()*1000),
+//                       sourceTrajectoryPoints.at(cpt)->get_mcl()};
+        double p[3] = { (sourceTrajectoryPoints.at(cpt)->get_x()),
+                       (sourceTrajectoryPoints.at(cpt)->get_y()),
+                       sourceTrajectoryPoints.at(cpt)->get_mcl()*80};
         points->InsertPoint(cpt,p[0],p[1],p[2]);
         poly->GetPointIds()->SetId(cpt,cpt);
     }
